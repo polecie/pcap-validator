@@ -57,8 +57,8 @@ def result():
     else: #output of func is tuple of dataframes
         dataframe_1, dataframe_2 = output
         #change type to str
-        dataframe_1 = build_table(dataframe_1, 'blue_light')
-        dataframe_2 = build_table(dataframe_2, 'blue_light')
+        dataframe_1 = build_table(dataframe_1, 'blue_light' , font_size='medium' , font_family='Open Sans , sans-serif' , text_align='left' , width='auto' , index=False , even_color='black' , even_bg_color='white' )
+        dataframe_2 = build_table(dataframe_2, 'blue_light' , font_size='medium' , font_family='Open Sans , sans-serif' , text_align='left' , width='auto' , index=False , even_color='black' , even_bg_color='white' )
         return render_template('result.html', title='Результат', dataframe_1=dataframe_1, dataframe_2=dataframe_2)
 # ROUTES #
 
