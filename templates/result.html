@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if output %}
+{{output}}
+{% else %}
+{{dataframe_1 | safe}}
+{{dataframe_2 | safe}}
+{%endif%}
+{% endblock content %}

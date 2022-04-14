@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, url_for, redirect, flash
+from flask import Flask, render_template, request, url_for, redirect, flash, session
 from werkzeug.utils import secure_filename
 import os
-import imghdr
+import pandas as pd
+from analyze_pcap import summary_data
+from pretty_html_table import build_table
 
 # INSTANCES AND CONFIG #
 app = Flask(__name__)
@@ -25,7 +27,7 @@ def validate_file(stream):
 # ROUTES #
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', title='Проверить файл')
 
 @app.route('/', methods=['POST'])
 def upload():
@@ -41,9 +43,23 @@ def upload():
                     os.path.join(app.config['UPLOAD_PATH'], 
                     filename
                     ))
-                flash(message='Загрузилось', category='success')
-
+                session['filename'] = filename
+                return redirect(url_for('result'))
     return redirect(url_for('index'))
+
+@app.route('/result', methods=['GET'])
+def result():
+    filename = session.get('filename', None)
+    file = os.path.join(app.config['UPLOAD_PATH'], filename)
+    output = summary_data(file)
+    if isinstance(output, str): #check if output of func is str
+        return render_template('result.html', title='Результат', output=output)
+    else: #output of func is tuple of dataframes
+        dataframe_1, dataframe_2 = output
+        #change type to str
+        dataframe_1 = build_table(dataframe_1, 'blue_light')
+        dataframe_2 = build_table(dataframe_2, 'blue_light')
+        return render_template('result.html', title='Результат', dataframe_1=dataframe_1, dataframe_2=dataframe_2)
 # ROUTES #
 
 # RUN #
