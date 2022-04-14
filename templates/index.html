@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<form class="pcap" method="POST" action="{{url_for('upload')}}" enctype="multipart/form-data">
-    <input class="form-control form-control-sm mt-3" type="file" name="file" >
-    <input class="form-control form-control-sm mt-3" type="submit" value="Отправить">
-</form>
+<div class="card">
+    <form class="form" method="POST" action="{{url_for('upload')}}" enctype="multipart/form-data">
+        <input class="form-control form-control-sm mt-3" type="file" name="file" >
+        <input class="form-control form-control-sm mt-3" type="submit" value="Отправить">
+    </form>
+</div>
 {% endblock content %}

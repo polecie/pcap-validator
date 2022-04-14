@@ -1,27 +1,43 @@
-<html>
-    <header>
-        <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
-    </header>
-    <body>
-        {% extends 'base.html' %}
-        {% block content %}
-        {% if output %}
-        {{output}}
-        {% else %}
-        {{dataframe_1 | safe}}
-        {{dataframe_2 | safe}}
-        {%endif%}
-        {% endblock content %}
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<!--     <script>
-        $(document).ready( function () {{
-            $('#table').DataTable({{
-                // paging: false,    
-                // scrollY: 400,
-            }});
-        }});
-    </script> -->
-    </body>
-    </html>
-
+{% extends 'base.html' %}
+{% block content %}
+<div class="table-responsive-sm">
+<table class="table table-responsive table-sm table-hover table-bordered border-primary">
+    <tr>
+        {% for header in columns1 %}
+        <th scope="col">
+            {{header}}
+        </th>
+        {% endfor %}
+    </tr>
+    {% for raw in value1 %}
+    <tr scope="col">
+        {% for cell in raw %}
+        <td scope="row">
+            {{cell}}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</div>
+<div class="table-responsive-sm">
+<table class="table table-responsive table-sm table-hover table-bordered border-primary">
+    <tr>
+        {% for header in columns2 %}
+        <th scope="col">
+            {{header}}
+        </th>
+        {% endfor %}
+    </tr>
+    {% for raw in value2 %}
+    <tr scope="col">
+        {% for cell in raw %}
+        <td scope="row">
+            {{cell}}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock content %}

@@ -45,6 +45,8 @@ def upload():
                     ))
                 session['filename'] = filename
                 return redirect(url_for('result'))
+        else:
+            flash('Выбери файл', category='danger')
     return redirect(url_for('index'))
 
 @app.route('/result', methods=['GET'])
@@ -56,10 +58,11 @@ def result():
         return render_template('result.html', title='Результат', output=output)
     else: #output of func is tuple of dataframes
         dataframe_1, dataframe_2 = output
-        #change type to str
-        dataframe_1 = build_table(dataframe_1, 'blue_light' , font_size='medium' , font_family='Open Sans , sans-serif' , text_align='left' , width='auto' , index=False , even_color='black' , even_bg_color='white' )
-        dataframe_2 = build_table(dataframe_2, 'blue_light' , font_size='medium' , font_family='Open Sans , sans-serif' , text_align='left' , width='auto' , index=False , even_color='black' , even_bg_color='white' )
-        return render_template('result.html', title='Результат', dataframe_1=dataframe_1, dataframe_2=dataframe_2)
+        dataframe_1_columns = list(dataframe_1.columns)
+        dataframe_1_values = list(dataframe_1.values)
+        dataframe_2_columns = list(dataframe_2.columns)
+        dataframe_2_values = list(dataframe_2.values)
+        return render_template('result.html', title='Результат', columns1=dataframe_1_columns, value1=dataframe_1_values, columns2=dataframe_2_columns, value2=dataframe_2_values)
 # ROUTES #
 
 # RUN #

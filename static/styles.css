@@ -1,6 +1,9 @@
-.pcap {
-    position: absolute;
-    top: 30%;
-    left: 40%;
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding-top: 30%;
+    margin-top: 5%;
     font-size: 15px;
 }
