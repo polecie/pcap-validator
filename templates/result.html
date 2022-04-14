@@ -1,43 +1,52 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="table-responsive-sm">
-<table class="table table-responsive table-sm table-hover table-bordered border-primary">
-    <tr>
-        {% for header in columns1 %}
-        <th scope="col">
-            {{header}}
-        </th>
+{% if output %}
+{{output}}
+{% else %}
+<div class="table-container">
+<div class="">
+    <p>#1</p>
+    <table class="table table-responsive table-sm table-hover table-bordered border-primary">
+        <tr>
+            {% for header in columns1 %}
+            <th scope="col-sm" style="font-size: 10px;">
+                {{header}}
+            </th>
+            {% endfor %}
+        </tr>
+        {% for raw in value1 %}
+        <tr scope="col-sm">
+            {% for cell in raw %}
+            <td scope="row" style="font-size: 10px;">
+                {{cell}}
+            </td>
+            {% endfor %}
+        </tr>
         {% endfor %}
-    </tr>
-    {% for raw in value1 %}
-    <tr scope="col">
-        {% for cell in raw %}
-        <td scope="row">
-            {{cell}}
-        </td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    </table>
 </div>
-<div class="table-responsive-sm">
-<table class="table table-responsive table-sm table-hover table-bordered border-primary">
-    <tr>
-        {% for header in columns2 %}
-        <th scope="col">
-            {{header}}
-        </th>
+<div class="">
+    <p>#2</p>
+    <table class="table table-responsive table-sm table-hover table-bordered border-primary">
+        <tr>
+            {% for header in columns2 %}
+            <th scope="col" style="font-size: 10px;">
+                {{header}}
+            </th>
+            {% endfor %}
+        </tr>
+        {% for raw in value2 %}
+        <tr scope="col">
+            {% for cell in raw %}
+            <td scope="row" style="font-size: 10px;">
+
+                {{cell}}
+            </td>
+            {% endfor %}
+        </tr>
         {% endfor %}
-    </tr>
-    {% for raw in value2 %}
-    <tr scope="col">
-        {% for cell in raw %}
-        <td scope="row">
-            {{cell}}
-        </td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    </table>
 </div>
+</div>
+{% endif %}
 {% endblock content %}
