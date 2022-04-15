@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if output %}
-{{output}}
+<div class="mt-5">
+    <div class="mt-5">
+        <p style="font-size: 14px; font-weight: bold;">{{output}}</p>
+    </div>
+</div>
 {% else %}
-<div class="table-container">
-<div class="">
-    <p>#1</p>
+<div class="mt-5">
+<div class="mt-5">
     <table class="table table-responsive table-sm table-hover table-bordered border-primary">
         <tr>
             {% for header in columns1 %}
-            <th scope="col-sm" style="font-size: 10px;">
+            <th scope="col-sm" style="font-size: 11px;">
                 {{header}}
             </th>
             {% endfor %}
@@ -17,7 +20,7 @@
         {% for raw in value1 %}
         <tr scope="col-sm">
             {% for cell in raw %}
-            <td scope="row" style="font-size: 10px;">
+            <td scope="row" style="font-size: 11px;">
                 {{cell}}
             </td>
             {% endfor %}
@@ -25,12 +28,11 @@
         {% endfor %}
     </table>
 </div>
-<div class="">
-    <p>#2</p>
+<div class="mt-5">
     <table class="table table-responsive table-sm table-hover table-bordered border-primary">
         <tr>
             {% for header in columns2 %}
-            <th scope="col" style="font-size: 10px;">
+            <th scope="col" style="font-size: 11px;">
                 {{header}}
             </th>
             {% endfor %}
@@ -38,7 +40,7 @@
         {% for raw in value2 %}
         <tr scope="col">
             {% for cell in raw %}
-            <td scope="row" style="font-size: 10px;">
+            <td scope="row" style="font-size: 11px;">
 
                 {{cell}}
             </td>

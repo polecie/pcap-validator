@@ -27,7 +27,7 @@ def validate_file(stream):
 # ROUTES #
 @app.route('/')
 def index():
-    return render_template('index.html', title='Проверить файл')
+    return render_template('base.html', title='Проверить файл')
 
 @app.route('/', methods=['POST'])
 def upload():
@@ -44,6 +44,7 @@ def upload():
                     filename
                     ))
                 session['filename'] = filename
+                flash('Загрузилось', category='success')
                 return redirect(url_for('result'))
         else:
             flash('Выбери файл', category='danger')
