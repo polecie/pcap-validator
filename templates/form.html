@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block form %}
+<div class="">
+    <form class="form" method="POST" action="{{url_for('upload')}}" enctype="multipart/form-data" id="uploadImage">
+        <input class="form-control form-control-sm mt-3" type="file" name="file" style="font-size: 14px;" id="uploadFile" >
+        <input class="form-control form-control-sm mt-3" type="submit" value="Отправить" style="font-size: 14px;" id="uploadSubmit">
+        <br>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div id="targetLayer" style="display:none;"></div>
+    </form>
+</div>
+{% endblock form %}

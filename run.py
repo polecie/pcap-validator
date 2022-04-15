@@ -4,6 +4,7 @@ import os
 import pandas as pd
 from analyze_pcap import summary_data
 from pretty_html_table import build_table
+from tqdm import tqdm
 
 # INSTANCES AND CONFIG #
 app = Flask(__name__)
@@ -27,7 +28,7 @@ def validate_file(stream):
 # ROUTES #
 @app.route('/')
 def index():
-    return render_template('base.html', title='Проверить файл')
+    return render_template('form.html', title='Проверить файл')
 
 @app.route('/', methods=['POST'])
 def upload():
@@ -48,7 +49,7 @@ def upload():
                 return redirect(url_for('result'))
         else:
             flash('Выбери файл', category='danger')
-    return redirect(url_for('index'))
+    return redirect(url_for('result'))
 
 @app.route('/result', methods=['GET'])
 def result():
