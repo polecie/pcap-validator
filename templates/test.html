@@ -1,36 +1,38 @@
-<div class="hero is-dark is fullheight">
-<div class="hero-body">
-    <div class="container">
-        <div class="columns is-desktop ">
-            <div class="column is-one-third has-background-white bd-highlight-full">
-                <pre class="mt-4">текст текст текст текст текст текст текст те
+<section class="hero is-dark is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-desktop ">
+                <div class="column is-one-third has-background-white bd-highlight-full">
+                    <pre class="mt-4">текст текст текст текст текст текст текст те
                     ↓</pre>
-                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
 
-                        {% for category, message in messages %}
-                        <div class="alert alert-{{category}} alert-dismissible fade show mt-4 role="alert" style="font-size: 14px;">
-                            {{message}}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>          
-                        {% endfor %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{category}} alert-dismissible fade show mt-4 role=" alert"
+                        style="font-size: 14px;">
+                        {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
 
                     {% endif %}
-                {% endwith %}
-                <form class="form" method="POST" action="{{url_for('upload')}}" enctype="multipart/form-data">
-                    <input class="form-control form-control-sm " type="file" name="file" style="font-size: 14px;" >
-                    <input class="form-control form-control-sm" type="submit" value="Отправить" style="font-size: 14px;">
-                </form>
-                <pre class="mt-4">
-                    <br>vfdvfbdfbdb
+                    {% endwith %}
+                    <form class="form" method="POST" action="{{url_for('upload')}}" enctype="multipart/form-data">
+                        <input class="form-control form-control-sm mt-4" type="file" name="file"
+                            style="font-size: 14px;">
+                        <input class="form-control form-control-sm mt-4" type="submit" value="Отправить"
+                            style="font-size: 14px;">
+                    </form>
+                    <pre class="mt-4 mb-4">текст текст текст текст текст текст текст те</pre>
+                </div>
+                <div class="column has-background-link">
+                    <pre class="mt-4">
+                    {% block content %}
+                    {% endblock content %}
                 </pre>
+                </div>
             </div>
-            <div class="column has-background-link">
-                <code>is-three-quarters-mobile</code><br>
-                You can add the <code>is-rounded</code> modifier to make a <strong>rounded</strong> tag.
-                <span class="tag is-black">Black</span>
-            </div>
-          </div>
+        </div>
     </div>
-</div>
-</div>
+</section>

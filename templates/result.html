@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if output %}
-<div class="mt-5">
-    <div class="mt-5">
+<div class="mt-4">
+    <div class="mt-4">
         <p style="font-size: 14px; font-weight: bold;">{{output}}</p>
     </div>
 </div>
 {% else %}
-<div class="mt-5">
-<div class="mt-5">
+<div class="mt-4">
+<div class="mt-4">
     <table class="table table-responsive table-sm table-hover table-bordered border-primary">
         <tr>
             {% for header in columns1 %}
