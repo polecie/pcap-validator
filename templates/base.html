@@ -9,7 +9,7 @@
         {% if title %}
         PCAP | {{title}}
         {% else %}
-        PCAP VALIDATOR
+        PCAP
         {% endif %}
         {% endblock title %}
     </title>
@@ -19,38 +19,37 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='styles.css' ) }}">
 </head>
 <body>
-    <section class="hero is-dark is-fullheight">
+    <section class="hero is-white is-fullheight">
         <div class="hero-body">
             <div class="container">
-                <div class="columns is-desktop ">
-                    <div class="column is-one-third has-background-white bd-highlight-full">
-                        <pre class="mt-4">текст текст текст текст текст текст текст те</pre>
-                        <div class="column has-background-link mt-4">
-                            #2
+                <div class="columns is-desktop">
+                    <div class="column is-two-fifths has-background-white bd-highlight-full">
+                        <pre class="mt-4 is-family-monospace">текст текст текст текст текст текст текст текст текст<br>текст текст текст текст текст текст текст те</pre>
+                        <div class="column has-background-white mt-4">
+                            <!--<hr class="has-background-link">-->
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                                {% if messages %}
+            
+                                    {% for category, message in messages %}
+                                    
+                                    <div class="alert alert-{{category}} alert-dismissible fade show mt-4" style="font-size: 14px;">
+                                        {{message}}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>          
+                                    {% endfor %}
+            
+                                {% endif %}
+                            {% endwith %}
+
+                            <form class="form" method="POST" action="{{url_for('upload')}}" enctype="multipart/form-data">
+                                <input class="form-control form-control-sm mt-4" type="file" name="file" style="font-size: 14px;" >
+                                <input class="form-control form-control-sm mt-4 mb-4" type="submit" value="Отправить" style="font-size: 14px;">
+                            </form>
+                            <!--<hr class="has-background-link">-->
                         </div>
-                        <div class="box column has-background-dark mt-4">
-                        {% with messages = get_flashed_messages(with_categories=true) %}
-                            {% if messages %}
-        
-                                {% for category, message in messages %}
-                                
-                                <div class="alert alert-{{category}} alert-dismissible fade show mt-4" style="font-size: 14px;">
-                                    {{message}}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>          
-                                {% endfor %}
-        
-                            {% endif %}
-                        {% endwith %}
-                        <form class="form" method="POST" action="{{url_for('upload')}}" enctype="multipart/form-data">
-                            <input class="form-control form-control-sm mt-4" type="file" name="file" style="font-size: 14px;" >
-                            <input class="form-control form-control-sm mt-4 mb-4" type="submit" value="Отправить" style="font-size: 14px;">
-                        </form>
-                        </div>
-                        <pre class="mt-4 mb-4">текст текст текст текст текст текст текст те</pre>
                     </div>
-                    <div class="column is-0"></div>
-                    <div class="column has-background-link">
+                    <div class="column is-0"></div> <!--spacing between columns-->
+                    <div class="column has-background-white">
                         
                             {% block content %}
                             {% endblock content %}

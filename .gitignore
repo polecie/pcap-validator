@@ -5,3 +5,5 @@ __pycache__
 files/
 files\
 test.py
+templates\test.html
+templates\form.html

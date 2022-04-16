@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if output %}
-<div class="mt-4">
-    <div class="mt-4">
-        <p style="font-size: 14px; font-weight: bold;">{{output}}</p>
-    </div>
+<div class="column has-background-white has-text-centered">
+        <pre class="mt-4 is-family-monospace">{{output}}</pre>
 </div>
 {% else %}
 <div class="mt-4">
