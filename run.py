@@ -28,7 +28,7 @@ def validate_file(stream):
 # ROUTES #
 @app.route('/')
 def index():
-    return render_template('form.html', title='Проверить файл')
+    return render_template('base.html', title='Проверить файл')
 
 @app.route('/', methods=['POST'])
 def upload():
@@ -49,7 +49,7 @@ def upload():
                 return redirect(url_for('result'))
         else:
             flash('Выбери файл', category='danger')
-    return redirect(url_for('result'))
+    return redirect(url_for('index'))
 
 @app.route('/result', methods=['GET'])
 def result():
