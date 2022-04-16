@@ -1,10 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, flash, session
 from werkzeug.utils import secure_filename
 import os
-import pandas as pd
 from analyze_pcap import summary_data
-from pretty_html_table import build_table
-from tqdm import tqdm
 
 # INSTANCES AND CONFIG #
 app = Flask(__name__)
