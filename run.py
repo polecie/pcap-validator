@@ -69,5 +69,5 @@ def result():
 if __name__ == "__main__":
     if 'files' not in os.listdir('.'):
         os.mkdir('files')
-    app.run(debug=True)
+    app.run(debug=False)
 # RUN #
