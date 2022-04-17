@@ -21,7 +21,7 @@ def summary_data(file_name):
         streamer_info = streamer[col_list].drop_duplicates(['src_ip', 'dst_ip', 'application_name'])
         return app_bytes, streamer_info
     else:
-        return 'Нет данных по VPN'
+        return "there's no information about VPN"
         
 if __name__ == "__main__":
     print(summary_data('files\ipsec.pcap'))

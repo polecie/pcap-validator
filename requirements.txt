@@ -1,9 +1,7 @@
 cffi==1.15.0
 click==8.1.2
 dpkt==1.9.7.2
-filemagic==1.6
 Flask==2.1.1
-Flask-Uploads==0.2.1
 Flask-WTF==1.0.1
 importlib-metadata==4.11.3
 itsdangerous==2.1.2
@@ -12,7 +10,6 @@ MarkupSafe==2.1.1
 nfstream==6.4.3
 numpy==1.18.5
 pandas==1.4.2
-pretty-html-table==0.9.15
 psutil==5.9.0
 pycparser==2.21
 python-dateutil==2.8.2
