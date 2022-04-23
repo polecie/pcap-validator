@@ -1,2 +1,6 @@
-# PCAP/PCAPNG Validator #
+# PCAP/PCAPNG Validator
+
+Small application providing pcap/pcapng file validation
+
+
 

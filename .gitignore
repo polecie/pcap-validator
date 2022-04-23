@@ -2,8 +2,7 @@ venv
 .flaskenv
 .DS_Store
 __pycache__
-files/
-files\
+files
 test.py
-templates\test.html
-templates\form.html
+package-lock.json
+package.json
