@@ -16,7 +16,7 @@ col_list = ['src_ip','dst_ip','bidirectional_packets','bidirectional_bytes','app
 
 def summary_data(file_name):
     streamer = NFStreamer(file_name).to_pandas()
-    if 'VPN' in streamer['application_category_name'].unique():
+    if 'VPN' in streamer['application_category_name'].unique() or 'IPsec' in str(streamer['application_name'].unique()):
         app_bytes = (streamer.groupby(['application_name','application_category_name'],as_index=False)['bidirectional_bytes'].sum())
         streamer_info = streamer[col_list].drop_duplicates(['src_ip', 'dst_ip', 'application_name'])
         return app_bytes, streamer_info
