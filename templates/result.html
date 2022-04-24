@@ -1,51 +1,55 @@
 {% extends 'base.html' %}
 {% block content %}
+
 {% if output %}
-<div class="column has-background-white has-text-centered">
-        <pre class="mt-4 is-family-monospace">{{output}}</pre>
+<div class="mt-0 p-2 column has-background-info has-text-centered">
+    <div class="card has-background-white">
+        <div class="card-content">
+          <div class="content">
+            <span class="p-2">{{output}}</span>
+          </div>
+        </div>
+    </div>
 </div>
+
 {% else %}
-<div class="mt-4">
-<div class="mt-4">
-    <table class="table table-responsive table-sm table-hover table-bordered border-primary">
-        <tr>
-            {% for header in columns1 %}
-            <th scope="col-sm" style="font-size: 11px;">
-                {{header}}
-            </th>
-            {% endfor %}
-        </tr>
-        {% for raw in value1 %}
-        <tr scope="col-sm">
-            {% for cell in raw %}
+
+<table class="table table-responsive table-sm table-hover table-bordered border-primary">
+    <tr>
+        {% for header in columns1 %}
+        <th scope="col-sm" style="font-size: 11px;">
+            {{header}}
+        </th>
+        {% endfor %}
+    </tr>
+    {% for raw in value1 %}
+    <tr scope="col-sm">
+        {% for cell in raw %}
+        <td scope="row" style="font-size: 11px;">
+            {{cell}}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+<table class="table table-responsive table-sm table-hover table-bordered border-primary">
+    <tr>
+        {% for header in columns2 %}
+        <th scope="col" style="font-size: 11px;">
+            {{header}}
+        </th>
+        {% endfor %}
+    </tr>
+    {% for raw in value2 %}
+    <tr scope="col">
+        {% for cell in raw %}
             <td scope="row" style="font-size: 11px;">
                 {{cell}}
             </td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
-</div>
-<div class="mt-5">
-    <table class="table table-responsive table-sm table-hover table-bordered border-primary">
-        <tr>
-            {% for header in columns2 %}
-            <th scope="col" style="font-size: 11px;">
-                {{header}}
-            </th>
-            {% endfor %}
-        </tr>
-        {% for raw in value2 %}
-        <tr scope="col">
-            {% for cell in raw %}
-                <td scope="row" style="font-size: 11px;">
-                    {{cell}}
-                </td>
-            {% endfor %} 
-        </tr>
-        {% endfor %}
-    </table>
-</div>
-</div>
+        {% endfor %} 
+    </tr>
+    {% endfor %}
+</table>
 {% endif %}
+
 {% endblock content %}
