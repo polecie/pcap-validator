@@ -20,7 +20,7 @@ def summary_data(file_name):
         app_bytes = (streamer.groupby(['application_name','application_category_name'],as_index=False)['bidirectional_bytes'].sum())
         streamer_info = streamer[col_list].drop_duplicates(['src_ip', 'dst_ip', 'application_name'])
         return app_bytes, streamer_info
-    return "there's no information about VPN or everything just got simply crushed :)"
+    return "there's no information about VPN or everything just got simply crashed :)"
         
 if __name__ == "__main__":
     print(summary_data('files\ipsec.pcap'))

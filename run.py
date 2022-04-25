@@ -46,7 +46,7 @@ def upload():
                 flash('Download was successfull', category='success')
                 return redirect(url_for('result'))
         else:
-            flash('Choose file', category='danger')
+            flash('Choose file', category='primary')
     return redirect(url_for('index'))
 
 @app.route('/result', methods=['GET'])
@@ -69,5 +69,5 @@ def result():
 if __name__ == "__main__":
     if 'files' not in os.listdir('.'):
         os.mkdir('files')
-    app.run(debug=False)
+    app.run(debug=True)
 # RUN #
